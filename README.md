@@ -1,17 +1,18 @@
-<div>
-    <pre>
-        ██╗      █████╗ ████████╗███████╗██╗  ██╗████████╗ ██████╗  ██████╗███╗   ██╗███████╗
-        ██║     ██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝██╔═══██╗██╔════╝████╗  ██║██╔════╝
-        ██║     ███████║   ██║   █████╗   ╚███╔╝    ██║   ██║   ██║██║     ██╔██╗ ██║█████╗  
-        ██║     ██╔══██║   ██║   ██╔══╝   ██╔██╗    ██║   ██║   ██║██║     ██║╚██╗██║██╔══╝  
-        ███████╗██║  ██║   ██║   ███████╗██╔╝ ██╗   ██║   ╚██████╔╝╚██████╗██║ ╚████║██║     
-        ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═══╝╚═╝     
-        -------------------------------------------------------------------------------------
-        python cli to convert latex input to CNF(Conjuctive Normal Form).
-    </pre>
+<div align="center">
+<pre>
+██╗      █████╗ ████████╗███████╗██╗  ██╗████████╗ ██████╗  ██████╗███╗   ██╗███████╗
+██║     ██╔══██╗╚══██╔══╝██╔════╝╚██╗██╔╝╚══██╔══╝██╔═══██╗██╔════╝████╗  ██║██╔════╝
+██║     ███████║   ██║   █████╗   ╚███╔╝    ██║   ██║   ██║██║     ██╔██╗ ██║█████╗  
+██║     ██╔══██║   ██║   ██╔══╝   ██╔██╗    ██║   ██║   ██║██║     ██║╚██╗██║██╔══╝  
+███████╗██║  ██║   ██║   ███████╗██╔╝ ██╗   ██║   ╚██████╔╝╚██████╗██║ ╚████║██║     
+╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═══╝╚═╝     
+                                                                                                           
+-------------------------------------------------------------------------------------
+python cli to convert latex input to CNF(Conjuctive Normal Form).
+</pre>
 
-    [![PyPI](https://img.shields.io/pypi/v/LatexToCNF.svg)](https://pypi.org/project/LatexToCNF/)
-    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![PyPI](https://img.shields.io/pypi/v/LatexToCNF.svg)](https://pypi.org/project/LatexToCNF/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 </div>
 
 ## Installation
@@ -47,15 +48,15 @@ LatexToCNf --filepath "/path/to/folder/myinput.tex"
 LatexToCNF --filepath "/path/to/folder/myinput.txt"
 ```
 
-## Sample request file (`myrequest.yml`)
-### .tex
+## Sample input file
+### myinput.tex
 ```tex
 \neg \neg p
 \neg p \wedge q \rightarrow p \wedge (r \rightarrow q)
 r \rightarrow (s \rightarrow (t \wedge s \rightarrow r))
 ```
 
-### .text
+### myinput.text
 ```txt
 \neg \neg p
 \neg p \wedge q \rightarrow p \wedge (r \rightarrow q)
@@ -85,4 +86,8 @@ Distributed under the MIT license. See `LICENSE` for more information.
 4. Push to the branch (`git push origin feature/fooBar`)
 5. Create a new Pull Request
 
+<!-- Createing this README.md is based on 
+https://github.com/zahash/quaeso/blob/main/README.md
 
+so thanks zahash for your great repo.
+ -->
