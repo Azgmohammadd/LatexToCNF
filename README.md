@@ -18,7 +18,6 @@ python cli to convert latex input to CNF(Conjuctive Normal Form).
 ## Installation
 
 pip install this repo.
-(Note: Incompatible with Python 2.x)
 
 ```sh
 pip3 install LatexToCNF
