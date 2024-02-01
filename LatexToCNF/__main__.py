@@ -1,5 +1,5 @@
 from . import latex_parser as lp
-from .cnf_builder import parseToCNF 
+from .cnf_builder import parseToCNF, to_latex
 import argparse
 
 def main():
@@ -17,8 +17,8 @@ def main():
     results = list(map(parseToCNF, formulas))
     
     for idx, result in enumerate(results):
-        print(f"line-{idx + 1}: {result}")
-     
+        print(f"line-{idx + 1}: {to_latex(result)}")
+        
 def parse_args():
     ap = argparse.ArgumentParser(description="Perform operations on logical formula")
     
