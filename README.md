@@ -8,7 +8,7 @@
 ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝  ╚═════╝╚═╝  ╚═══╝╚═╝     
                                                                                                            
 -------------------------------------------------------------------------------------
-python cli to convert latex input to CNF(Conjuctive Normal Form).
+python cli to convert latex input to CNF(Conjunctive Normal Form).
 </pre>
 
 [![PyPI](https://img.shields.io/pypi/v/LatexToCNF.svg)](https://pypi.org/project/LatexToCNF/)
