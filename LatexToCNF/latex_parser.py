@@ -79,11 +79,9 @@ class LatexParser:
         try:
             with open(file=file_path, mode='r') as file:
                 lines = file.readlines()
-                # line = file.read()
                 parses = [self.parse(line) for line in lines]
-                # parse = self.parse(line)[0]
+
             return parses
-            # return parse
 
         except FileNotFoundError:
             raise FileNotFoundError(f"File not found: {file_path}")
