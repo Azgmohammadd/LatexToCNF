@@ -11,7 +11,7 @@ with (HERE / "requirements.txt").open() as f:
 
 setup(
     name="LatexToCNF",
-    version="0.1.1",
+    version="0.1.3",
     description="python cli program to convert latex input to CNF (conjuctive normal form).",
     long_description=README,
     long_description_content_type="text/markdown",
