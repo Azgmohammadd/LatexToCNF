@@ -77,7 +77,7 @@ def DISTR(eta_1: lp.Formula, eta_2: lp.Formula) -> lp.Formula:
     if form(eta_1) == 'CONJUNCTION':
         return conjunction(DISTR(eta_1[0], eta_2), DISTR(eta_1[2], eta_2))
 
-    if form(eta_2) == 'CONJUCNTION':
+    if form(eta_2) == 'CONJUNCTION':
         return conjunction(DISTR(eta_1, eta_2[0]), DISTR(eta_1, eta_2[2]))
 
     return disjunction(eta_1, eta_2)
@@ -95,10 +95,10 @@ def CNF(formula: lp.Formula) -> lp.Formula:
     FORM = form(formula)
 
     match FORM:
-        case 'CONJUCTION':
+        case 'CONJUNCTION':
             return conjunction(CNF(formula[0]), CNF(formula[2]))
         case 'DISJUNCTION':
-            return DISTR(CNF(formula[0]), formula[2])
+            return DISTR(CNF(formula[0]), CNF(formula[2]))
         case 'NEGATION':
             return formula
         case 'ATOM':
@@ -120,3 +120,20 @@ def parseToCNF(parse: list[lp.Formula]):
         return None
     
     return CNF(NNF(IMPL_FREE(parse[0])))
+
+def to_latex(formula: lp.Formula):    
+    FORM = form(formula)
+
+    match FORM:
+        case 'NEGATION':
+            return f"(\\neg {to_latex(formula[1])})"
+        case 'CONJUNCTION':
+            return f"({to_latex(formula[0])} \\wedge {to_latex(formula[2])})"
+        case 'DISJUNCTION':
+            return f"({to_latex(formula[0])} \\vee {to_latex(formula[2])})"
+        case 'IMPLIES':
+            return f"({to_latex(formula[0])} \\rightarrow {to_latex(formula[2])})"
+        case 'ATOM':
+            return f"{formula}"
+        case _:
+            return None
