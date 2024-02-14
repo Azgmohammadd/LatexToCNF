@@ -32,7 +32,7 @@ class LatexParser:
     
     _negation = pp.Word(r'~\neg', max=0).setParseAction(lambda token: "\neg")
     _and = pp.Word(r'&\wedge').setParseAction(lambda token: "\wedge")
-    _or = pp.Word(r'|\vee').setParseAction(lambda token: "\vee")
+    _or = pp.Word(r'|\vee').setParseAction(lambda token: "\\vee")
     _implies = pp.Word(r'>\rightarrow').setParseAction(lambda token: "\rightarrow")
     
     operators = [
