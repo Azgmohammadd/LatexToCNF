@@ -138,7 +138,7 @@ def to_latex(formula: lp.Formula):
         case "NEGATION":
             return f"(\\neg {to_latex(formula[1])})"
         case "CONJUNCTION":
-            return f"({to_latex(formula[0])} \\wedge {to_latex(formula[2])})"
+            return f"({to_latex(formula[0])}) \\wedge ({to_latex(formula[2])})"
         case "DISJUNCTION":
             return f"{to_latex(formula[0])} \\vee {to_latex(formula[2])}"
         case "IMPLIES":
