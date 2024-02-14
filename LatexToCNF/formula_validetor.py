@@ -1,6 +1,7 @@
 from . import latex_parser as lp
 import re
 
+
 def iscommand(string: str) -> bool:
     """
     Check if a string represents a LaTeX command.
@@ -11,27 +12,8 @@ def iscommand(string: str) -> bool:
     Returns:
         bool: True if the string is a LaTeX command, False otherwise.
     """
-    return re.match(pattern=r'^\\', string=string)
+    return re.match(pattern=r"^\\", string=string)
 
-def isliteral(formula: lp.Formula) -> bool:
-    """
-    Check if a formula is a literal.
-
-    Args:
-        formula (Formula): Input logical formula.
-
-    Returns:
-        bool: True if the formula is a literal, False otherwise.
-    """
-    if isinstance(formula, list):
-        if formula[0] == lp.LatexParser._negation:  # negation
-            return True
-
-    elif isinstance(formula, str) and not iscommand(formula):
-        return True
-
-    else:
-        return False
 
 def well_formed_formula(parse: lp.Formula) -> bool:
     """
@@ -52,16 +34,18 @@ def well_formed_formula(parse: lp.Formula) -> bool:
                 return well_formed_formula(parse=parse[0])
 
             case 2:  # \neg (WFF)
-                if parse[0] != lp.LatexParser._negation:
+                if form(parse) != "NEGATION":
                     return False
-                
+
                 return well_formed_formula(parse=parse[1])
 
             case 3:  # WFF (operator) WFF
-                if parse[1] not in [lp.LatexParser._and, lp.LatexParser._or, lp.LatexParser._implies]:
+                if form(parse) not in ["CONJUNCTION", "DISJUNCTION", "IMPLIES"]:
                     return False
 
-                return well_formed_formula(parse=parse[0]) and well_formed_formula(parse=parse[2])
+                return well_formed_formula(parse=parse[0]) and well_formed_formula(
+                    parse=parse[2]
+                )
             case _:
                 return False
 
@@ -70,6 +54,7 @@ def well_formed_formula(parse: lp.Formula) -> bool:
 
     else:
         return False
+
 
 def negation(phi: lp.Formula):
     """
@@ -81,7 +66,8 @@ def negation(phi: lp.Formula):
     Returns:
         Formula: Negation of the subformula.
     """
-    return ['\\neg', phi]
+    return ["\\neg", phi]
+
 
 def conjunction(phi: lp.Formula, psi: lp.Formula):
     """
@@ -94,7 +80,8 @@ def conjunction(phi: lp.Formula, psi: lp.Formula):
     Returns:
         Formula: Conjunction of the two subformulas.
     """
-    return [phi, '\wedge', psi]
+    return [phi, "\\wedge", psi]
+
 
 def disjunction(phi: lp.Formula, psi: lp.Formula):
     """
@@ -107,7 +94,8 @@ def disjunction(phi: lp.Formula, psi: lp.Formula):
     Returns:
         Formula: Disjunction of the two subformulas.
     """
-    return [phi, '\\vee', psi]
+    return [phi, "\\vee", psi]
+
 
 def implies(phi: lp.Formula, psi: lp.Formula):
     """
@@ -116,10 +104,11 @@ def implies(phi: lp.Formula, psi: lp.Formula):
     Args:
         phi (Formula): Antecedent subformula.
         psi (Formula): Consequent subformula.
-Returns:
-        Formula: Implication between the two subformulas.
+    Returns:
+            Formula: Implication between the two subformulas.
     """
-    return [phi, '\rightarrow', psi]
+    return [phi, "\\rightarrow", psi]
+
 
 def form(formula: lp.Formula) -> str:
     """
@@ -133,18 +122,18 @@ def form(formula: lp.Formula) -> str:
     """
     if isinstance(formula, list):
         if formula[0] == lp.LatexParser._negation:
-            return 'NEGATION'
+            return "NEGATION"
 
         if formula[1] == lp.LatexParser._and:
-            return 'CONJUNCTION'
+            return "CONJUNCTION"
 
         if formula[1] == lp.LatexParser._or:
-            return 'DISJUNCTION'
+            return "DISJUNCTION"
 
         if formula[1] == lp.LatexParser._implies:
-            return 'IMPLIES'
+            return "IMPLIES"
 
     if isinstance(formula, str) and not iscommand(formula):
-        return 'ATOM'
+        return "ATOM"
 
     return None
