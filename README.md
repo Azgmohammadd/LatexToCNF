@@ -65,8 +65,8 @@ r \rightarrow (s \rightarrow (t \wedge s \rightarrow r))
 ### output
 ```sh
 line-1: p
-line-2: (((p \vee (\neg q)) \vee p) \wedge ((p \vee (\neg q)) \vee ((\neg r) \vee q)))
-line-3: ((\neg r) \vee ((\neg s) \vee (((\neg t) \vee (\neg s)) \vee r)))
+line-2: (p \vee (\neg q) \vee p) \wedge (p \vee (\neg q) \vee (\neg r) \vee q)
+line-3: (\neg r) \vee (\neg s) \vee (\neg t) \vee (\neg s) \vee r
 ```
 
 ## Meta
